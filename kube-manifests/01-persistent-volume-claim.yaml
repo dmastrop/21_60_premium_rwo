@@ -6,6 +6,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: premium-rwo 
+  #storageClassName: standard-rwo
   resources: 
     requests:
       storage: 4Gi
