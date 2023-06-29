@@ -1,19 +1,27 @@
 apiVersion: v1
+# https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#persistentvolumeclaim-v1-core
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
+  # this will be used in the  mysql-deployment.yaml when creating the PVC for the volume that will be bound to the pod.
 spec: 
+#https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#PersistentVolumeClaimSpec
+#https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#persistentvolumeclaimspec-v1-core
   accessModes:
     - ReadWriteOnce
-  storageClassName: premium-rwo 
   #storageClassName: standard-rwo
+  storageClassName: premium-rwo
+  # kubectl get storageclass "standard-rwo"
   resources: 
+  # https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#resourcerequirements-v1-core
     requests:
       storage: 4Gi
 
 # NEED FOR PVC
 # 1. Dynamic volume provisioning allows storage volumes to be created 
 # on-demand. 
+
+# dynamic volume provisioning allows for storage to be provisioned on demand
 
 # 2. Without dynamic provisioning, cluster administrators have to manually 
 # make calls to their cloud or storage provider to create new storage 
